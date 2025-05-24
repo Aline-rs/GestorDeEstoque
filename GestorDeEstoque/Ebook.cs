@@ -26,7 +26,8 @@ namespace GestorDeEstoque
 
         public void AdicionarEntrada()
         {
-
+            Console.WriteLine("Não é oissível dar entrada no estoque de um E-book pois é um arquivo digital!");
+            Console.ReadLine();
         }
 
         public void AdicionarSaida()

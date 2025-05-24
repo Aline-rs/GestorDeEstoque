@@ -26,7 +26,12 @@ namespace GestorDeEstoque
 
         public void AdicionarEntrada()
         {
-
+            Console.WriteLine($"Adicionar vagas no curso {nome}");
+            Console.WriteLine("Digite a quantidade de vagas que você quer dar entrada: ");
+            int entrada = int.Parse(Console.ReadLine());
+            vagas += entrada;
+            Console.WriteLine("Entrada registrada!");
+            Console.ReadLine();
         }
 
         public void AdicionarSaida()

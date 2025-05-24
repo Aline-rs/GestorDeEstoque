@@ -26,7 +26,12 @@ namespace GestorDeEstoque
 
         public void AdicionarEntrada()
         {
-
+            Console.WriteLine($"Adicionar entrada no estoque do produto {nome}");
+            Console.WriteLine("Digite a quantidade que você quer dar entrada: ");
+            int entrada = int.Parse(Console.ReadLine());
+            estoque += entrada;
+            Console.WriteLine("Entrada registrada!");
+            Console.ReadLine();
         }
 
         public void AdicionarSaida()

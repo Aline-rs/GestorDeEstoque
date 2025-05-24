@@ -39,6 +39,7 @@ namespace GestorDeEstoque
                             Remover();
                             break;
                         case Menu.Entrada:
+                            Entrada();
                             break;
                         case Menu.Saida:
                             break;
@@ -81,6 +82,22 @@ namespace GestorDeEstoque
                 produtos.RemoveAt(id);
                 Salvar();
                 Console.WriteLine("Produto removido com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("ID inválido!");
+            }
+        }
+
+        static void Entrada()
+        {
+            Listagem();
+            Console.WriteLine("Digite o ID do elemento que você quer dar entrada:");
+            int id = int.Parse(Console.ReadLine());
+            if (id >= 0 && id < produtos.Count)
+            {
+                produtos[id].AdicionarEntrada();
+                Salvar();
             }
             else
             {
