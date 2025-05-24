@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 
 namespace GestorDeEstoque
 {
@@ -11,6 +12,8 @@ namespace GestorDeEstoque
         enum Menu { Listar = 1, Adicionar, Remover, Entrada, Saida, Sair }
         static void Main(string[] args)
         {
+            Carregar();
+
             bool escolheuSair = false;
             while (escolheuSair == false)
             {
@@ -27,6 +30,7 @@ namespace GestorDeEstoque
                     switch (escolha)
                     {
                         case Menu.Listar:
+                            Listagem();
                             break;
                         case Menu.Adicionar:
                             Cadastro();
@@ -49,6 +53,17 @@ namespace GestorDeEstoque
                 Console.Clear();
             }
 
+        }
+
+        static void Listagem()
+        {
+            Console.WriteLine("Lista de produtos: ");
+            foreach (IEstoque produto in produtos)
+            {
+                produto.Exibir();
+            }
+
+            Console.ReadLine();
         }
 
         static void Cadastro()
@@ -123,6 +138,27 @@ namespace GestorDeEstoque
             BinaryFormatter encoder = new BinaryFormatter();
 
             encoder.Serialize(stream, produtos);
+            stream.Close();
+        }
+
+        static void Carregar()
+        {
+            FileStream stream = new FileStream("produtos.dat", FileMode.OpenOrCreate);
+            BinaryFormatter decoder = new BinaryFormatter();
+
+            try
+            {
+                produtos = (List<IEstoque>)decoder.Deserialize(stream);
+                if (produtos == null)
+                {
+                    produtos = new List<IEstoque>();
+                }
+            }
+            catch (Exception e)
+            {
+                produtos = new List<IEstoque>();
+            }
+
             stream.Close();
         }
     }
