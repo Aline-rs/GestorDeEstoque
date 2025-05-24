@@ -36,6 +36,7 @@ namespace GestorDeEstoque
                             Cadastro();
                             break;
                         case Menu.Remover:
+                            Remover();
                             break;
                         case Menu.Entrada:
                             break;
@@ -58,12 +59,33 @@ namespace GestorDeEstoque
         static void Listagem()
         {
             Console.WriteLine("Lista de produtos: ");
+            int i = 0;
             foreach (IEstoque produto in produtos)
             {
+                Console.WriteLine("ID: " + i);
                 produto.Exibir();
+                i++;
             }
 
             Console.ReadLine();
+        }
+
+        static void Remover()
+        {
+            Listagem();
+            Console.WriteLine("Digite o ID do elemento que você quer remover:");
+            int id = int.Parse(Console.ReadLine());
+
+            if (id >= 0 && id < produtos.Count)
+            {
+                produtos.RemoveAt(id);
+                Salvar();
+                Console.WriteLine("Produto removido com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("ID inválido!");
+            }
         }
 
         static void Cadastro()
