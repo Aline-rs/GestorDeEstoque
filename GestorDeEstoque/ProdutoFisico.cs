@@ -20,17 +20,21 @@ namespace GestorDeEstoque
 
         public void Exibir()
         {
-            
+            Console.WriteLine($"Nome: {nome}");
+            Console.WriteLine($"Frete: {frete}");
+            Console.WriteLine($"Preço: {preco}");
+            Console.WriteLine($"Estoque: {estoque}");
+            Console.WriteLine("=========================");
         }
 
         public void AdicionarEntrada()
         {
-           
+
         }
 
         public void AdicionarSaida()
         {
-            
+
         }
     }
 }
