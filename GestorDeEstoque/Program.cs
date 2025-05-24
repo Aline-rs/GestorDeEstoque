@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace GestorDeEstoque
 {
@@ -81,6 +83,8 @@ namespace GestorDeEstoque
 
             ProdutoFisico pf = new ProdutoFisico(nome, preco, frete);
             produtos.Add(pf);
+
+            Salvar();
         }
 
         static void CadastroEbook()
@@ -94,6 +98,8 @@ namespace GestorDeEstoque
             string autor = Console.ReadLine();
             Ebook eb = new Ebook(nome, preco, autor);
             produtos.Add(eb);
+
+            Salvar();
         }
 
         static void CadastroCurso()
@@ -107,6 +113,17 @@ namespace GestorDeEstoque
             string autor = Console.ReadLine();
             Curso cs = new Curso(nome, preco, autor);
             produtos.Add(cs);
+
+            Salvar();
+        }
+
+        static void Salvar()
+        {
+            FileStream stream = new FileStream("produtos.dat", FileMode.OpenOrCreate);
+            BinaryFormatter encoder = new BinaryFormatter();
+
+            encoder.Serialize(stream, produtos);
+            stream.Close();
         }
     }
 }

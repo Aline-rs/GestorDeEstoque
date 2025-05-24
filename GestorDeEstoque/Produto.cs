@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestorDeEstoque
 {
+    [Serializable]
     abstract class Produto //Serve como pai, mas não é possivel criar instâncias dela
     {
         public string nome;

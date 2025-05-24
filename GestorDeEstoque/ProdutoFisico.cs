@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestorDeEstoque
 {
-    internal class ProdutoFisico : Produto, IEstoque
+    [Serializable]
+    class ProdutoFisico : Produto, IEstoque
     {
         public float frete;
         private int estoque;
