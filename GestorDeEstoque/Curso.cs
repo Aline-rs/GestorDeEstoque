@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestorDeEstoque
 {
-    internal class Curso : Produto
+    internal class Curso : Produto, IEstoque
     {
         public string autor;
         private int vagas;
@@ -18,5 +18,19 @@ namespace GestorDeEstoque
             this.autor = autor;
         }
 
+        public void Exibir()
+        {
+
+        }
+
+        public void AdicionarEntrada()
+        {
+
+        }
+
+        public void AdicionarSaida()
+        {
+
+        }
     }
 }

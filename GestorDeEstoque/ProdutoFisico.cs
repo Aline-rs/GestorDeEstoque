@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestorDeEstoque
 {
-    internal class ProdutoFisico : Produto
+    internal class ProdutoFisico : Produto, IEstoque
     {
         public float frete;
         private int estoque;
@@ -16,6 +16,21 @@ namespace GestorDeEstoque
             this.nome = nome;
             this.preco = preco;
             this.frete = frete;
+        }
+
+        public void Exibir()
+        {
+            
+        }
+
+        public void AdicionarEntrada()
+        {
+           
+        }
+
+        public void AdicionarSaida()
+        {
+            
         }
     }
 }
