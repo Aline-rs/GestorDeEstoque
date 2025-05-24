@@ -42,6 +42,7 @@ namespace GestorDeEstoque
                             Entrada();
                             break;
                         case Menu.Saida:
+                            Saida();
                             break;
                         case Menu.Sair:
                             escolheuSair = true;
@@ -97,6 +98,22 @@ namespace GestorDeEstoque
             if (id >= 0 && id < produtos.Count)
             {
                 produtos[id].AdicionarEntrada();
+                Salvar();
+            }
+            else
+            {
+                Console.WriteLine("ID inválido!");
+            }
+        }
+
+        static void Saida()
+        {
+            Listagem();
+            Console.WriteLine("Digite o ID do elemento que você quer dar dar baixa:");
+            int id = int.Parse(Console.ReadLine());
+            if (id >= 0 && id < produtos.Count)
+            {
+                produtos[id].AdicionarSaida();
                 Salvar();
             }
             else

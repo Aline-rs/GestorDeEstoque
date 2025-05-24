@@ -26,13 +26,18 @@ namespace GestorDeEstoque
 
         public void AdicionarEntrada()
         {
-            Console.WriteLine("Não é oissível dar entrada no estoque de um E-book pois é um arquivo digital!");
+            Console.WriteLine("Não é possível dar entrada no estoque de um E-book pois é um arquivo digital!");
             Console.ReadLine();
         }
 
         public void AdicionarSaida()
         {
-
+            Console.WriteLine($"Adicionar venda no E-book {nome}");
+            Console.WriteLine("Digite a quantidade que você quer dar entrada: ");
+            int saida = int.Parse(Console.ReadLine());
+            vendas += saida;
+            Console.WriteLine("Venda registrada!");
+            Console.ReadLine();
         }
     }
 }
