@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GestorDeEstoque
 {
     internal class Program
     {
+        static List<IEstoque> produtos = new List<IEstoque>();
         enum Menu { Listar = 1, Adicionar, Remover, Entrada, Saida, Sair }
         static void Main(string[] args)
         {
@@ -25,6 +27,7 @@ namespace GestorDeEstoque
                         case Menu.Listar:
                             break;
                         case Menu.Adicionar:
+                            Cadastro();
                             break;
                         case Menu.Remover:
                             break;
@@ -41,7 +44,69 @@ namespace GestorDeEstoque
                 {
                     escolheuSair = true;
                 }
+                Console.Clear();
             }
+
+        }
+
+        static void Cadastro()
+        {
+            Console.WriteLine("Cadastro de Produto");
+            Console.WriteLine("1 - Produto Fisico\n2 - Ebook\n3 - Curso");
+            string opStr = Console.ReadLine();
+            int escolhaInt = int.Parse(opStr);
+            switch (escolhaInt)
+            {
+                case 1:
+                    CadastroPFisico();
+                    break;
+                case 2:
+                    CadastroEbook();
+                    break;
+                case 3:
+                    CadastroCurso();
+                    break;
+            }
+        }
+
+        static void CadastroPFisico()
+        {
+            Console.WriteLine("Cadastrando produto físico: ");
+            Console.Write("Nome: ");
+            string nome = Console.ReadLine();
+            Console.Write("Preço: ");
+            float preco = float.Parse(Console.ReadLine());
+            Console.Write("Frete: ");
+            float frete = float.Parse(Console.ReadLine());
+
+            ProdutoFisico pf = new ProdutoFisico(nome, preco, frete);
+            produtos.Add(pf);
+        }
+
+        static void CadastroEbook()
+        {
+            Console.WriteLine("Cadastrando ebook: ");
+            Console.Write("Nome: ");
+            string nome = Console.ReadLine();
+            Console.Write("Preço: ");
+            float preco = float.Parse(Console.ReadLine());
+            Console.Write("Autor: ");
+            string autor = Console.ReadLine();
+            Ebook eb = new Ebook(nome, preco, autor);
+            produtos.Add(eb);
+        }
+
+        static void CadastroCurso()
+        {
+            Console.WriteLine("Cadastrando curso: ");
+            Console.Write("Nome: ");
+            string nome = Console.ReadLine();
+            Console.Write("Preço: ");
+            float preco = float.Parse(Console.ReadLine());
+            Console.Write("Autor: ");
+            string autor = Console.ReadLine();
+            Curso cs = new Curso(nome, preco, autor);
+            produtos.Add(cs);
         }
     }
 }
